@@ -23,7 +23,7 @@ export const uploadFile = async (req, res) => {
 
         const { content } = req.body;
         // Save the file content to IPFS and get the hash
-        const ipfsHash = await saveFileToHelia(content); // the content has to be an object
+        const ipfsHash = await saveFileToHelia({content}); // the content has to be an object
 
         // Create a new file record in the database with the content and IPFS hash
         const newFile = await File.create({ content, ipfsHash });

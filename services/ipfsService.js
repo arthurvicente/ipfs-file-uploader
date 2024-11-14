@@ -1,4 +1,3 @@
-//services/ipfsService.js
 import { createHelia } from "helia";
 import { dagCbor } from "@helia/dag-cbor";
 //-----------------------------------------------------------------------------------------------------------//
@@ -18,7 +17,7 @@ const d = dagCbor(helia);
  * Saves the provided content object to IPFS using Helia and returns its CID.
  * 
  * @param {Object} content - The content object to be uploaded to IPFS.
- * @returns {Promise<string>} - A promise that resolves to the CID of the uploaded content.
+ * @returns {Promise<string>} - A promise that resolves to the CID of the uploaded content as a string.
  * 
  * The function uses the DAG-CBOR codec to add the content object to IPFS. The CID (Content Identifier)
  * is a unique identifier for the content stored on IPFS, ensuring data integrity and immutability.
@@ -28,11 +27,11 @@ const d = dagCbor(helia);
 export const saveFileToHelia = async (content) => {
     try {
         console.log("Uploading file to IPFS...");
-        if(!content || typeof content !== 'object'){
-            throw new Error("The content provided is not an object.")
+        if (!content || typeof content !== 'object') {
+            throw new Error("The content provided is not an object.");
         }
-        const myImmutableAddress = await d.add({ content });
-        return myImmutableAddress;
+        const myImmutableAddress = await d.add(content);
+        return myImmutableAddress.toString(); // Convertendo o CID para string
     } catch (error) {
         console.error("Error uploading content to IPFS:", error);
         throw new Error("Failed to upload content to IPFS");
