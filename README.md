@@ -35,7 +35,7 @@ Before you begin, ensure you have met the following requirements:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/ipfs-file-upload.git
+   git clone https://github.com/arthurvicente/ipfs-file-uploader.git
    cd ipfs-file-upload
    ```
 
